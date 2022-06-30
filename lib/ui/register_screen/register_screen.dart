@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-import 'package:task_1/login_screen/login_screen.dart';
-import 'package:task_1/onboarding_page/onboarding_page.dart';
-import 'package:task_1/onboarding_page/textdesign.dart';
-import 'package:task_1/register_screen/elvatedbutton_design.dart';
-import 'package:task_1/register_screen/textformfield_design.dart';
+
+
+import 'package:task_1/ui/login_screen/login_screen.dart';
+import 'package:task_1/shared/elvatedbutton_design.dart';
+import 'package:task_1/shared/textformfield_design.dart';
+
+
+
+import '../onboarding_page/onboarding_page.dart';
+import '../../shared/textdesign.dart';
 
 
 class Registerscreen extends StatefulWidget {
@@ -17,6 +22,8 @@ class Registerscreen extends StatefulWidget {
 
 class _RegisterscreenState extends State<Registerscreen> {
   final formKey = GlobalKey<FormState>();
+  String initialCountry = 'EG';
+  PhoneNumber number = PhoneNumber(isoCode: 'EG');
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,7 @@ class _RegisterscreenState extends State<Registerscreen> {
           children: [
             Stack(children: [
               Container(
-                height: 100.h,
+                height: 100,
                 width: double.infinity,
                 child: Image.asset(
                   'assets/images/bg.png',
@@ -51,7 +58,7 @@ class _RegisterscreenState extends State<Registerscreen> {
               )
             ]),
             SizedBox(
-              height: 20.h,
+              height: 20,
             ),
             Padding(
               padding: const EdgeInsets.only(left: 15),
@@ -62,7 +69,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                   fontWeight: null),
             ),
             SizedBox(
-              height: 15.h,
+              height: 15,
             ),
             Padding(
               padding: const EdgeInsets.all(12.0),
@@ -80,7 +87,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                       size: 16,
                       fontWeight: null),
                   SizedBox(
-                    width: 3.h,
+                    width: 3,
                   ),
                   Container(
                       padding: EdgeInsets.all(3),
@@ -96,7 +103,7 @@ class _RegisterscreenState extends State<Registerscreen> {
               ),
             ),
             SizedBox(
-              height: 10.h,
+              height: 10,
             ),
             Form(
               key: formKey,
@@ -111,11 +118,11 @@ class _RegisterscreenState extends State<Registerscreen> {
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(
-                    height: 10.h,
+                    height: 10,
                   ),
                   Textformfield_design(hintstring: 'Eg: example@email.com'),
                   SizedBox(
-                    height: 15.h,
+                    height: 15,
                   ),
                   Text(
                     'Phone Number',
@@ -123,7 +130,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(
-                    height: 10.h,
+                    height: 10,
                   ),
                   Container(padding: EdgeInsets.all(7),
                     decoration: BoxDecoration(
@@ -135,13 +142,15 @@ class _RegisterscreenState extends State<Registerscreen> {
                         // Textformfield_design(
                         //     hintstring: 'Eg: 812345678'),
                         Expanded(child:
-                        InternationalPhoneNumberInput(inputDecoration: InputDecoration(border:InputBorder.none,hintText: 'Eg: 812345678',hintStyle: TextStyle(color: Colors.black12)),
+                        InternationalPhoneNumberInput(
+                            initialValue: number,spaceBetweenSelectorAndTextField: 5,selectorButtonOnErrorPadding: 5,ignoreBlank: false,
+                            inputDecoration: InputDecoration(border:InputBorder.none,hintText: 'Eg: 812345678',hintStyle: TextStyle(color: Colors.black12),),
                             onInputChanged: (phone){}))
                       ],
                     ),
                   ),
                   SizedBox(
-                    height: 15.h,
+                    height: 15,
                   ),
                   Text(
                     'Password',
@@ -149,7 +158,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                     style: TextStyle(color: Colors.grey),
                   ),
                   SizedBox(
-                    height: 10.h,
+                    height: 10,
                   ),
                   Textformfield_design(
                     hintstring: 'Password',
@@ -161,15 +170,15 @@ class _RegisterscreenState extends State<Registerscreen> {
                 ],
               ),
             )),
-            SizedBox(height: 15.h,),
-            Elvatedbutton_design(isbold: false,text: 'Register',color: Colors.blue,size: 18,height: 45.h,onclick: (){
+            SizedBox(height: 15),
+            Elvatedbutton_design(isbold: false,text: 'Register',color: Colors.blue,size: 18,height: 50,onclick: (){
               if(formKey.currentState!.validate()){
                 return null;
               }
             }
 
             ),
-            SizedBox(height: 10.h,),
+            SizedBox(height: 10,),
              Center(child: Textdesign(text: 'Or' ,color:Colors.grey, size: 18, fontWeight: null)),
             Container(margin: EdgeInsets.all(18),
                 decoration: BoxDecoration(
@@ -180,27 +189,27 @@ class _RegisterscreenState extends State<Registerscreen> {
 
                 child: TextButton(onPressed: (){}, child: Row(mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ImageIcon(AssetImage('assets/images/google.png'),color: Colors.red,size: 18,),
-                    SizedBox(width: 6.w,),
+                   Image.asset('assets/images/google_logo.png',width: 30,height: 30,),
+                    SizedBox(width: 6),
                     Textdesign(text: 'Sign with by google',color: Colors.blueAccent,size: 16,fontWeight: null,),
 
 
                   ],
                 ),)),
-            SizedBox(height: 20.h,),
+
             Row(mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Textdesign(text: 'Has any account?', color: Colors.black54, size: 18, fontWeight: null),
-                SizedBox(width: 4.w,),
+                Textdesign(text: 'Has any account?', color: Colors.black54, size: 16, fontWeight: null),
+                SizedBox(width: 4),
                 InkWell(onTap: (){
                   Navigator.pushNamed(context, Loginscreen.ROUTE_NAME);
                 },
-                    child: Textdesign(text: 'Sign in here', color: Colors.lightBlue, size: 18, fontWeight: null))
+                    child: Textdesign(text: 'Sign in here', color: Colors.lightBlue, size: 16, fontWeight: null))
               ],
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(height: 20),
             Center(child: Textdesign(text: 'By regestering your account,your are agree to our ', color:Colors.black38, size: 14, fontWeight: null)),
-            SizedBox(height: 10.h,),
+            SizedBox(height: 10),
             Center(child: Textdesign(text: 'terms and condition', color: Colors.lightBlue, size: 14, fontWeight: null))
           ],
         ),

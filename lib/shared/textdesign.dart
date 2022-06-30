@@ -10,7 +10,8 @@ class Textdesign extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Text(text.toString(),style: TextStyle(color: color,fontWeight: fontWeight,fontSize:size),maxLines: 2,);
+    return 
+      Text(text.toString(),style: TextStyle(color: color,fontWeight: fontWeight,fontSize:size),maxLines: 3,);
 
   }
 
